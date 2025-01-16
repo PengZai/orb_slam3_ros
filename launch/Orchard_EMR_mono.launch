@@ -4,11 +4,11 @@
     <!-- Main node -->
     <node name="orb_slam3" pkg="orb_slam3_ros" type="ros_mono" output="screen">
         <!-- change the topics according to the dataset -->
-        <remap from="/camera/image_raw" to="/cam0/image_raw"/>
+        <remap from="/camera/image_raw" to="/zed2_front_node/left_raw/image_raw_color"/>
 
         <!-- Parameters for original ORB-SLAM3 -->
         <param name="voc_file"      type="string" value="$(find orb_slam3_ros)/orb_slam3/Vocabulary/ORBvoc.txt.bin"/>
-        <param name="settings_file" type="string" value="$(find orb_slam3_ros)/config/Monocular/EuRoC.yaml"/>
+        <param name="settings_file" type="string" value="$(find orb_slam3_ros)/config/Monocular/Orchard_EMR.yaml"/>
 
         <!-- Parameters for ROS -->
         <param name="world_frame_id"    type="string"   value="map" />

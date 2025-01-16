@@ -2,7 +2,7 @@
 
 
 IMAGE_NAME="orb_slam3:noetic-ros"
-DATA_PATH="/mnt/usb/datasets"
+DATA_PATH="/media/zhipeng/zhipeng_usb/datasets"
 # Pick up config image key if specified
 if [[ ! -z "${CONFIG_DATA_PATH}" ]]; then
     DATA_PATH=$CONFIG_DATA_PATH
@@ -13,12 +13,12 @@ PROJECT_DIR=$(pwd)
 PROJECT_NAME=$(basename "$PWD")
 
 
-docker build -t $IMAGE_NAME -f "$PROJECT_DIR/catkin_ws/src/orb_slam3_ros/Dockerfile_for_dev" .
+docker build -t $IMAGE_NAME -f "${HOME}/vscode_projects/orb_slam3_ros/catkin_ws/src/orb_slam3_ros/Dockerfile_for_dev.txt" .
 
 
 xhost +local:docker
 
-docker run --rm \
+docker run \
     -e DISPLAY \
     -v ~/.Xauthority:/root/.Xauthority:rw \
     --network host \
