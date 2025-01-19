@@ -5,6 +5,8 @@
 #--------------------------------------------------------------------------------------------
 File.version: "1.0"
 
+System.SaveAtlasToFile: "map_for_stereo_from_20240603_120008_12_to_20240603_120459_99_merge_SlowRun_SlowBag_ZED2"
+
 Camera.type: "Rectified"
 
 # Camera calibration and distortion parameters (OpenCV) 
