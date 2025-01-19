@@ -30,7 +30,6 @@
 #include "GeometricTools.h"
 
 #include <iostream>
-
 #include <mutex>
 #include <chrono>
 
@@ -2525,7 +2524,7 @@ void Tracking::MonocularInitialization()
         // Find correspondences
         ORBmatcher matcher(0.9,true);
         int nmatches = matcher.SearchForInitialization(mInitialFrame,mCurrentFrame,mvbPrevMatched,mvIniMatches,100);
-
+        std::cout << "the number of matching point : " << nmatches << " for initialization between init frame and current frame " << std::endl;
         // Check if there are enough correspondences
         if(nmatches<100)
         {
@@ -2767,6 +2766,7 @@ bool Tracking::TrackReferenceKeyFrame()
     vector<MapPoint*> vpMapPointMatches;
 
     int nmatches = matcher.SearchByBoW(mpReferenceKF,mCurrentFrame,vpMapPointMatches);
+    std::cout << "number of matching points in tracking process with reference frame: " << nmatches << std::endl;
 
     if(nmatches<15)
     {
@@ -2923,6 +2923,7 @@ bool Tracking::TrackWithMotionModel()
         th=15;
 
     int nmatches = matcher.SearchByProjection(mCurrentFrame,mLastFrame,th,mSensor==System::MONOCULAR || mSensor==System::IMU_MONOCULAR);
+    std::cout << "number of matching points in tracking process with motion model: " << nmatches << std::endl;
 
     // If few matches, uses a wider window search
     if(nmatches<20)
@@ -3062,6 +3063,9 @@ bool Tracking::TrackLocalMap()
                 mCurrentFrame.mvpMapPoints[i] = static_cast<MapPoint*>(NULL);
         }
     }
+
+
+    std::cout << "mnMatchesInliers: " << mnMatchesInliers << " in TracLocalMap" << std::endl;
 
     // Decide if the tracking was succesful
     // More restrictive if there was a relocalization recently

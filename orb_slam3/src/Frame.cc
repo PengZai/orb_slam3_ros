@@ -418,10 +418,14 @@ void Frame::AssignFeaturesToGrid()
 void Frame::ExtractORB(int flag, const cv::Mat &im, const int x0, const int x1)
 {
     vector<int> vLapping = {x0,x1};
-    if(flag==0)
+    if(flag==0){
         monoLeft = (*mpORBextractorLeft)(im,cv::Mat(),mvKeys,mDescriptors,vLapping);
-    else
+    }
+    else{
         monoRight = (*mpORBextractorRight)(im,cv::Mat(),mvKeysRight,mDescriptorsRight,vLapping);
+    }
+    std::cout << "the number of extracted orb keypoints in left frame: " << mvKeys.size() << " and in right frame: "<< mvKeysRight.size()  <<  std::endl;
+
 }
 
 bool Frame::isSet() const {

@@ -278,6 +278,7 @@ namespace ORB_SLAM3 {
         vector<float> vCalibration;
         if (cameraType_ == PinHole) {
             bNeedToRectify_ = true;
+            // bNeedToRectify_ = false;
 
             //Read intrinsic parameters
             float fx = readParameter<float>(fSettings,"Camera2.fx",found);

@@ -782,7 +782,7 @@ namespace ORB_SLAM3
         T(1,2) = -meanY*sY;
         T(2,2) = 1.f;
     }
-
+ 
     int TwoViewReconstruction::CheckRT(const Eigen::Matrix3f &R, const Eigen::Vector3f &t, const vector<cv::KeyPoint> &vKeys1, const vector<cv::KeyPoint> &vKeys2,
                                        const vector<Match> &vMatches12, vector<bool> &vbMatchesInliers,
                                        const Eigen::Matrix3f &K, vector<cv::Point3f> &vP3D, float th2, vector<bool> &vbGood, float &parallax)

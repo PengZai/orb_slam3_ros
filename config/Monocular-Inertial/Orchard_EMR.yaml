@@ -1,18 +1,6 @@
 %YAML:1.0
 
 #--------------------------------------------------------------------------------------------
-# System config
-#--------------------------------------------------------------------------------------------
-
-# When the variables are commented, the system doesn't load a previous session or not store the current one
-
-# If the LoadFile doesn't exist, the system give a message and create a new Atlas from scratch
-#System.LoadAtlasFromFile: "Session_MH01_MH02_MH03_Mono"
-
-# The store file is created from the current session, if a file with the same name exists it is deleted
-#System.SaveAtlasToFile: "Session_MH01_MH02_MH03_Mono"
-
-#--------------------------------------------------------------------------------------------
 # Camera Parameters. Adjust them!
 #--------------------------------------------------------------------------------------------
 File.version: "1.0"
@@ -30,11 +18,10 @@ Camera1.k2: 0.09640778384615316
 Camera1.p1: 0.0006926527085876931
 Camera1.p2: 0.0002509315599491622
 
+
+# Camera resolution
 Camera.width: 1920
 Camera.height: 1080
-
-# Camera.newWidth: 600
-# Camera.newHeight: 350
 
 Camera.newWidth: 480
 Camera.newHeight: 270
@@ -45,12 +32,29 @@ Camera.fps: 20
 # Color order of the images (0: BGR, 1: RGB. It is ignored if images are grayscale)
 Camera.RGB: 1
 
+# Transformation from camera to body-frame (imu)
+IMU.T_b_c1: !!opencv-matrix
+   rows: 4
+   cols: 4
+   dt: f
+   data: [1,0,0,-0.005,
+         0,1,0,-0.005,
+         0,0,1,0.0117,
+         0.0, 0.0, 0.0, 1.0]
+
+# IMU noise
+IMU.NoiseGyro: 0.00010715166296138123 # 1.6968e-04
+IMU.NoiseAcc: 0.00019111474100504597 # 2.0000e-3
+IMU.GyroWalk: 3.7072628390376134e-06
+IMU.AccWalk: 1.6112292047120985e-05 # 3.0000e-3
+IMU.Frequency: 200.0
+
 #--------------------------------------------------------------------------------------------
 # ORB Parameters
 #--------------------------------------------------------------------------------------------
 
 # ORB Extractor: Number of features per image
-ORBextractor.nFeatures: 1000
+ORBextractor.nFeatures: 1000 # 1000
 
 # ORB Extractor: Scale factor between levels in the scale pyramid 	
 ORBextractor.scaleFactor: 1.2
@@ -67,7 +71,7 @@ ORBextractor.minThFAST: 7
 
 #--------------------------------------------------------------------------------------------
 # Viewer Parameters
-#---------------------------------------------------------------------------------------------
+#--------------------------------------------------------------------------------------------
 Viewer.KeyFrameSize: 0.05
 Viewer.KeyFrameLineWidth: 1.0
 Viewer.GraphLineWidth: 0.9
@@ -75,7 +79,7 @@ Viewer.PointSize: 2.0
 Viewer.CameraSize: 0.08
 Viewer.CameraLineWidth: 3.0
 Viewer.ViewpointX: 0.0
-Viewer.ViewpointY: -0.7
-Viewer.ViewpointZ: -1.8
-Viewer.ViewpointF: 500.0
+Viewer.ViewpointY: -1.7
+Viewer.ViewpointZ: 0.8
+Viewer.ViewpointF: -500.0
 
