@@ -5,7 +5,7 @@
     <node name="orb_slam3" pkg="orb_slam3_ros" type="ros_mono_inertial" output="screen">
         <!-- change the topics according to the dataset -->
         <remap from="/camera/image_raw"     to="/zed2_front_node/left_raw/image_raw_color"/>
-        <remap from="/imu"                  to="/imu/data_corrected"/>
+        <remap from="/imu"                  to="/ms/imu/data"/>
 
         <!-- Parameters for original ORB-SLAM3 -->
         <param name="voc_file"      type="string" value="$(find orb_slam3_ros)/orb_slam3/Vocabulary/ORBvoc.txt.bin"/>
