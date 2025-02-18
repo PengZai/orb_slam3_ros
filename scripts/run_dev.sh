@@ -2,7 +2,7 @@
 
 
 IMAGE_NAME="orb_slam3:noetic-ros"
-DATA_PATH="/media/zhipeng/zhipeng_usb/datasets"
+DATA_PATH="/media/${USER}/zhipeng_usb/datasets"
 # Pick up config image key if specified
 if [[ ! -z "${CONFIG_DATA_PATH}" ]]; then
     DATA_PATH=$CONFIG_DATA_PATH
