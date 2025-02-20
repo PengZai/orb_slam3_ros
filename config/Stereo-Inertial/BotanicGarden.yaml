@@ -51,11 +51,12 @@ Camera.fps: 10
 # Color order of the images (0: BGR, 1: RGB. It is ignored if images are grayscale)
 Camera.RGB: 1
 
+# 0: disable loop closure, 1: enable loop closure
 System.LoopClosing: 0
 
 # Close/Far threshold. Baseline times.
-# Transformation from camera1 to camera2 = camera2 in camera1 frame
 Stereo.ThDepth: 65.0
+# Transformation from camera1 frame to camera2 frame = camera2 in camera1 frame
 Stereo.T_c1_c2: !!opencv-matrix
   rows: 4
   cols: 4
