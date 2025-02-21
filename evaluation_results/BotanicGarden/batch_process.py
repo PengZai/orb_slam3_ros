@@ -4,8 +4,34 @@ from evo.tools import file_interface
 from evo.core.trajectory import PoseTrajectory3D
 import shutil
 
-folder = "1018_00"
-filename = "orbslam3_stereo_inertial_without_loop_clourse_for_1018_00_img10hz600p_kf_traj.txt"
+
+def invert_transformation_matrix(T):
+    """
+    Computes the inverse of a 4x4 homogeneous transformation matrix.
+    
+    Parameters:
+        T (numpy.ndarray): 4x4 transformation matrix
+    
+    Returns:
+        numpy.ndarray: 4x4 inverse transformation matrix
+    """
+    # Extract rotation (R) and translation (t)
+    R = T[:3, :3]  # 3x3 rotation matrix
+    t = T[:3, 3]   # 3x1 translation vector
+
+    # Compute the inverse transformation
+    R_inv = R.T  # Transpose of rotation matrix
+    t_inv = -R_inv @ t  # Compute new translation
+
+    # Construct the inverse transformation matrix
+    T_inv = np.eye(4)
+    T_inv[:3, :3] = R_inv
+    T_inv[:3, 3] = t_inv
+
+    return T_inv
+
+folder = "1005_07"
+filename = "orbslam3_stereo_inertial_with_loop_clourse_for_1005_07_img10hz600p_cam_traj.txt"
 
 if "cam" in filename.split("_"):
     frame_type = "cam"
@@ -27,7 +53,7 @@ filename = filename.split(".")[0]
 # ])
 
 # keep same, it seems we don't need to transfer to VLP16 coordinates, which is more precise
-sensor_coordinate_transform_matrix = np.array([
+sensor_coordinate_transform_matrix_for_camera_frame = np.array([
     [1.,0,0,0],  
     [0,1.,0,0],  
     [0,0,1.,0],  
@@ -35,13 +61,17 @@ sensor_coordinate_transform_matrix = np.array([
 ])
 
 
-# seems x in key frame of orbslam system is z in BotanicGarden, and y is -y
-system_coordinate_transform_matrix_for_key_frame = np.array([
-    [0.,  1.,  0.,   0],  
-    [-1., 0.,  0.,   0],  
-    [0.,  0., 1.,   0],  
-    [0.,  0,   0,   1.0]
+# because KeyFrame is in Xsens coordinates, so we need to transfer it to RGB0 coordinates
+# RGB0 in Xsens coordinates
+sensor_coordinate_transform_matrix_for_key_frame = np.array([
+    [-0.00140533,-0.00896721,0.99995881,0.18377395],
+    [-0.99999022,0.0042065,-0.00136765,0.14789743],
+    [-0.00419407,-0.99995095,-0.00897304,-0.0087318],
+    [0.0,0.0,0.0,1.0]
 ])
+
+
+
 
 # seems x in camera frame of orbslam system is z in BotanicGarden, and y is -y
 system_coordinate_transform_matrix_for_camera_frame = np.array([
@@ -51,6 +81,14 @@ system_coordinate_transform_matrix_for_camera_frame = np.array([
     [0,  0,  0,  1.0]
 ])
 
+
+# seems x in key frame of orbslam system is -z in BotanicGarden
+system_coordinate_transform_matrix_for_key_frame = np.array([
+    [0., 0.,  -1.,  0],  
+    [0., 1.,  0.,   0],  
+    [1., 0.,   0.,  0],  
+    [0.,  0,   0,   1.0]
+])
 
 
 
@@ -73,10 +111,10 @@ for pose in traj.poses_se3:
 
     if frame_type == "cam":
     # Apply the transformation
-        transformed_pose_matrix =   sensor_coordinate_transform_matrix @ system_coordinate_transform_matrix_for_camera_frame @ pose
+        transformed_pose_matrix =   system_coordinate_transform_matrix_for_camera_frame @ sensor_coordinate_transform_matrix_for_camera_frame @ pose
     
     else: 
-        transformed_pose_matrix =   sensor_coordinate_transform_matrix @ system_coordinate_transform_matrix_for_key_frame @ pose
+        transformed_pose_matrix =   system_coordinate_transform_matrix_for_key_frame @ sensor_coordinate_transform_matrix_for_key_frame @ pose
 
     # Append transformed pose as SE3 object
     transformed_poses.append(transformed_pose_matrix)

@@ -52,7 +52,7 @@ Camera.fps: 10
 Camera.RGB: 1
 
 # 0: disable loop closure, 1: enable loop closure
-System.LoopClosing: 0
+System.LoopClosing: 1
 
 # Close/Far threshold. Baseline times.
 Stereo.ThDepth: 65.0
