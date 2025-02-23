@@ -1,6 +1,18 @@
 %YAML:1.0
 
 #--------------------------------------------------------------------------------------------
+# System config
+#--------------------------------------------------------------------------------------------
+
+# When the variables are commented, the system doesn't load a previous session or not store the current one
+
+# If the LoadFile doesn't exist, the system give a message and create a new Atlas from scratch
+#System.LoadAtlasFromFile: "Session_MH01_MH02_MH03_Stereo60_Pseudo"
+
+# The store file is created from the current session, if a file with the same name exists it is deleted
+#System.SaveAtlasToFile: "Session_MH01_MH02_MH03_Stereo60_Pseudo"
+
+#--------------------------------------------------------------------------------------------
 # Camera Parameters. Adjust them!
 #--------------------------------------------------------------------------------------------
 File.version: "1.0"
@@ -19,13 +31,19 @@ Camera1.p1: 0.0
 Camera1.p2: 0.0
 Camera1.k3: 0.0
 
+Camera2.fx: 644.4385505412966
+Camera2.fy: 643.5879520187435
+Camera2.cx: 455.1775919513420
+Camera2.cy: 304.1616226347153
 
-# Camera resolution
+Camera2.k1: -0.057705696896734
+Camera2.k2: 0.086955444511364
+Camera2.p1: 0.0
+Camera2.p2: 0.0
+Camera2.k3: 0.0
+
 Camera.width: 960
 Camera.height: 600
-
-# 0: disable loop closure, 1: enable loop closure
-System.LoopClosing: 1
 
 # Camera frames per second 
 Camera.fps: 10
@@ -33,7 +51,21 @@ Camera.fps: 10
 # Color order of the images (0: BGR, 1: RGB. It is ignored if images are grayscale)
 Camera.RGB: 1
 
-# Transformation from camera to body-frame (imu)
+# 0: disable loop closure, 1: enable loop closure
+System.LoopClosing: 1
+
+# Close/Far threshold. Baseline times.
+Stereo.ThDepth: 65.0
+# Transformation from camera1 frame to camera2 frame = camera2 in camera1 frame
+Stereo.T_c1_c2: !!opencv-matrix
+  rows: 4
+  cols: 4
+  dt: f
+  data: [0.999994564612669,-0.00327143011166783,-0.000410475508767800,0.253736175410149,
+          0.00326819763481066,0.999965451959397,-0.00764289028177120,-0.000362553856124796,
+          0.000435464509051199,0.00764150722461529,0.999970708440001,-0.000621002717451192,
+          0.0,0.0,0.0,1.0]
+
 IMU.T_b_c1: !!opencv-matrix
   rows: 4
   cols: 4
@@ -45,19 +77,17 @@ IMU.T_b_c1: !!opencv-matrix
 
 
 
-# IMU noise
 IMU.NoiseGyro: 0.002 # 1.6968e-04
 IMU.NoiseAcc: 0.01 # 2.0000e-3
 IMU.GyroWalk: 0.00008
 IMU.AccWalk: 0.00003 # 3.0000e-3
 IMU.Frequency: 400.0
-
 #--------------------------------------------------------------------------------------------
 # ORB Parameters
 #--------------------------------------------------------------------------------------------
 
 # ORB Extractor: Number of features per image
-ORBextractor.nFeatures: 3000
+ORBextractor.nFeatures: 1500
 
 # ORB Extractor: Scale factor between levels in the scale pyramid 	
 ORBextractor.scaleFactor: 1.2
@@ -86,4 +116,3 @@ Viewer.ViewpointY: -0.7
 Viewer.ViewpointZ: -1.8
 Viewer.ViewpointF: 500.0
 Viewer.imageViewScale: 1.0
-
