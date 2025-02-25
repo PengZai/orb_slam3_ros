@@ -1,11 +1,13 @@
 APE w.r.t. translation part (m)
 (not aligned)
 
-       max	1.739044
-      mean	1.002051
-    median	0.875781
-       min	0.160391
-      rmse	1.114920
-       sse	229.963711
-       std	0.488815
+       max	1.610966
+      mean	1.020418
+    median	1.106409
+       min	0.035328
+      rmse	1.128017
+       sse	235.398079
+       std	0.480801
 
+Plot saved to BotanicGarden/1018_00/orbslam3_monocular_inertial_for_1018_00_img10hz600p/test_0/2d_ape_cam_traj_raw
+Plot saved to BotanicGarden/1018_00/orbslam3_monocular_inertial_for_1018_00_img10hz600p/test_0/2d_ape_cam_traj_map

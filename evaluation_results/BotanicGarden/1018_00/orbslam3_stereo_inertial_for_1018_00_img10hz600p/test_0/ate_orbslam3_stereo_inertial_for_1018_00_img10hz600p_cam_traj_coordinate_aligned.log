@@ -1,11 +1,13 @@
 APE w.r.t. translation part (m)
 (with SE(3) Umeyama alignment)
 
-       max	1.353703
-      mean	0.800946
-    median	0.706606
-       min	0.467016
-      rmse	0.828326
-       sse	126.932899
-       std	0.211207
+       max	1.444763
+      mean	0.842376
+    median	0.798561
+       min	0.341489
+      rmse	0.904879
+       sse	151.479253
+       std	0.330467
 
+Plot saved to BotanicGarden/1018_00/orbslam3_stereo_inertial_for_1018_00_img10hz600p/test_0/2d_ate_cam_traj_raw
+Plot saved to BotanicGarden/1018_00/orbslam3_stereo_inertial_for_1018_00_img10hz600p/test_0/2d_ate_cam_traj_map

@@ -8,7 +8,7 @@ import shutil
 
 
 sequence_name = '1018_00'
-sensor_type = 'stereo_inertial'
+sensor_type = 'monocular_inertial'
 filename_prefix = '_'.join(['orbslam3', sensor_type,'for', sequence_name, 'img10hz600p'])
 
 if not os.path.exists(os.path.join(sequence_name, filename_prefix)):
@@ -50,9 +50,9 @@ shutil.copy(os.path.join('../../config', ('-').join([s.capitalize() for s in sen
 
 # VLP16 in Xsens coordinates
 sensor_coordinate_transform_matrix_for_camera_frame = np.array([
-    [0.999678872580465,0.0252865664429322,0.00150422292234868,0.0584867781527745],  
-    [-0.0252723438960774,0.999649431893338,-0.0078025434141585,0.00840419966766332],  
-    [-0.00170103929405540,0.00776298237926191,0.99996789371916,0.168915521980526],  
+    [0.999678872580465,0.0252865664429322,0.00150422292234868,0],  
+    [-0.0252723438960774,0.999649431893338,-0.0078025434141585,0],  
+    [-0.00170103929405540,0.00776298237926191,0.99996789371916,0],  
     [0.0,0.0,0.0,1.0]
 ])
 
@@ -68,9 +68,9 @@ sensor_coordinate_transform_matrix_for_camera_frame = np.array([
 
 # VLP16 in Xsens coordinates
 sensor_coordinate_transform_matrix_for_key_frame = np.array([
-    [0.999678872580465,0.0252865664429322,0.00150422292234868,0.0584867781527745],  
-    [-0.0252723438960774,0.999649431893338,-0.0078025434141585,0.00840419966766332],  
-    [-0.00170103929405540,0.00776298237926191,0.99996789371916,0.168915521980526],  
+    [0.999678872580465,0.0252865664429322,0.00150422292234868,0],  
+    [-0.0252723438960774,0.999649431893338,-0.0078025434141585,0],  
+    [-0.00170103929405540,0.00776298237926191,0.99996789371916,0],  
     [0.0,0.0,0.0,1.0]
 ])
 
@@ -169,4 +169,3 @@ for traj_dict in traj_dicts:
         file_interface.write_tum_trajectory_file(os.path.join(sequence_name, filename_prefix, current_testfolder_name, camera_filename + "_coordinate_aligned"+filename_suffix), traj)
     else: 
         file_interface.write_tum_trajectory_file(os.path.join(sequence_name, filename_prefix, current_testfolder_name, keyframe_filename + "_coordinate_aligned"+filename_suffix), traj)
-

@@ -2,11 +2,13 @@ RPE w.r.t. translation part (m)
 for delta = 1 (frames) using consecutive pairs
 (not aligned)
 
-       max	0.889625
-      mean	0.132336
-    median	0.044496
-       min	0.008468
-      rmse	0.258832
-       sse	2.880751
-       std	0.222444
+       max	1.114217
+      mean	0.118587
+    median	0.036263
+       min	0.010431
+      rmse	0.261791
+       sse	3.700853
+       std	0.233391
 
+Plot saved to BotanicGarden/1018_00/orbslam3_stereo_inertial_for_1018_00_img10hz600p/test_0/2d_rpe_kf_traj_raw
+Plot saved to BotanicGarden/1018_00/orbslam3_stereo_inertial_for_1018_00_img10hz600p/test_0/2d_rpe_kf_traj_map
