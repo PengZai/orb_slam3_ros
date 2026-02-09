@@ -1,0 +1,125 @@
+%YAML:1.0
+
+#--------------------------------------------------------------------------------------------
+# System config
+#--------------------------------------------------------------------------------------------
+
+# When the variables are commented, the system doesn't load a previous session or not store the current one
+
+# If the LoadFile doesn't exist, the system give a message and create a new Atlas from scratch
+#System.LoadAtlasFromFile: "Session_MH01_MH02_MH03_Stereo60_Pseudo"
+
+# The store file is created from the current session, if a file with the same name exists it is deleted
+#System.SaveAtlasToFile: "Session_MH01_MH02_MH03_Stereo60_Pseudo"
+
+#--------------------------------------------------------------------------------------------
+# Camera Parameters. Adjust them!
+#--------------------------------------------------------------------------------------------
+File.version: "1.0"
+
+Camera.type: "KannalaBrandt8"
+
+# Camera calibration and distortion parameters (OpenCV) 
+Camera1.fx: 1057.8085759554679
+Camera1.fy: 1057.8344071878955
+Camera1.cx: 1031.0394456453769
+Camera1.cy: 727.7604933179784
+
+Camera1.k1: -0.03999018098363963
+Camera1.k2: 0.0035531756082936186
+Camera1.k3: -0.0006681279528559426
+Camera1.k4: -0.0009677749839773924
+
+Camera1.overlappingBegin: 0
+# Camera1.overlappingEnd: 2637
+Camera1.overlappingEnd: 10000
+
+
+Camera2.fx: 1058.4010918263214
+Camera2.fy: 1058.5035544505658
+Camera2.cx: 1029.3052164899436
+Camera2.cy: 717.0103196643621
+
+Camera2.k1: -0.03124164248538125
+Camera2.k2: -0.02633329423472931
+Camera2.k3: 0.03894424132096168
+Camera2.k4: -0.019217878957815994
+
+
+Camera2.overlappingBegin: 0
+# Camera2.overlappingEnd: 2637
+Camera2.overlappingEnd: 10000
+
+Camera.width: 2048
+Camera.height: 1536
+
+# Camera frames per second 
+Camera.fps: 10
+
+# Color order of the images (0: BGR, 1: RGB. It is ignored if images are grayscale)
+Camera.RGB: 1
+
+# 0: disable loop closure, 1: enable loop closure
+System.LoopClosing: 1
+
+# Close/Far threshold. Baseline times.
+Stereo.ThDepth: 100.0
+Stereo.T_c1_c2: !!opencv-matrix
+  rows: 4
+  cols: 4
+  dt: f
+  data: [ 0.999709898, 0.0002240975, 0.0240846351, 0.1394700376,
+          -0.0002438655, 0.9999996358, 0.0008178376, 0.0002412604,
+          -0.0240844431, -0.0008234737, 0.9997095886, -0.0029572811,
+          0.0,0.0,0.0,1.0]
+
+IMU.T_b_c1: !!opencv-matrix
+  rows: 4
+  cols: 4
+  dt: f
+  data: [0.0521232345, -0.0073054379, 0.9986139389, 0.1219040939,
+          -0.9986040017, -0.0089493528, 0.0520572461, 0.0366053924,
+          0.0085566474, -0.9999332676, -0.0077617087, -0.0562970105,
+          0.0,0.0,0.0,1.0]
+
+
+
+IMU.NoiseGyro: 0.00060369579 # 1.6968e-04
+IMU.NoiseAcc: 0.001093618 # 2.0000e-3
+IMU.GyroWalk: 3.22094e-05
+IMU.AccWalk: 4.584471e-05 # 3.0000e-3
+IMU.Frequency: 200.0
+#--------------------------------------------------------------------------------------------
+# ORB Parameters
+#--------------------------------------------------------------------------------------------
+
+# ORB Extractor: Number of features per image
+ORBextractor.nFeatures: 2500
+
+# ORB Extractor: Scale factor between levels in the scale pyramid 	
+ORBextractor.scaleFactor: 1.2
+
+# ORB Extractor: Number of levels in the scale pyramid	
+ORBextractor.nLevels: 8
+
+# ORB Extractor: Fast threshold
+# Image is divided in a grid. At each cell FAST are extracted imposing a minimum response.
+# Firstly we impose iniThFAST. If no corners are detected we impose a lower value minThFAST
+# You can lower these values if your images have low contrast			
+ORBextractor.iniThFAST: 20
+ORBextractor.minThFAST: 7
+
+#--------------------------------------------------------------------------------------------
+# Viewer Parameters
+#--------------------------------------------------------------------------------------------
+Viewer.KeyFrameSize: 0.05
+Viewer.KeyFrameLineWidth: 1.0
+Viewer.GraphLineWidth: 0.9
+Viewer.PointSize: 2.0
+Viewer.CameraSize: 0.08
+Viewer.CameraLineWidth: 3.0
+Viewer.ViewpointX: 0.0
+Viewer.ViewpointY: -0.7
+Viewer.ViewpointZ: -1.8
+Viewer.ViewpointF: 500.0
+Viewer.imageViewScale: 1.0

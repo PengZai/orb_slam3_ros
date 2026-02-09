@@ -20,6 +20,8 @@ Camera1.p2: 0.0
 Camera1.k3: 0.0
 
 
+
+
 # Camera resolution
 Camera.width: 960
 Camera.height: 600

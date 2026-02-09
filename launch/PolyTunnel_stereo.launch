@@ -5,12 +5,12 @@
     <node name="orb_slam3" pkg="orb_slam3_ros" type="ros_stereo" output="screen">
     
         <!-- change the topics according to the dataset -->
-        <remap from="/camera/left/image_raw"    to="/zed2i/zed_node/left_raw/image_raw_color"/>
-        <remap from="/camera/right/image_raw"   to="/zed2i/zed_node/right_raw/image_raw_color"/>
+        <remap from="/camera/left/image_raw"    to="/forwardLeft/image_raw"/>
+        <remap from="/camera/right/image_raw"   to="/forwardRight/image_raw"/>
 
         <!-- Parameters for original ORB-SLAM3 -->
         <param name="voc_file"      type="string" value="$(find orb_slam3_ros)/orb_slam3/Vocabulary/ORBvoc.txt.bin"/>
-        <param name="settings_file" type="string" value="$(find orb_slam3_ros)/config/Stereo/PolyTunnel.yaml"/>
+        <param name="settings_file" type="string" value="$(find orb_slam3_ros)/config/Stereo/PolyTunnel_left_forward_right_forward_basler.yaml"/>
 
         <!-- Parameters for ROS -->
         <param name="world_frame_id"    type="string"   value="map" />

@@ -5,60 +5,33 @@
 #--------------------------------------------------------------------------------------------
 File.version: "1.0"
 
-# System.SaveAtlasToFile: "map_for_stereo_from_20240603_120008_12_to_20240603_120459_99_merge_SlowRun_SlowBag_ZED2"
-
-Camera.type: "PinHole"
+Camera.type: "KannalaBrandt8"
 
 # Camera calibration and distortion parameters (OpenCV) 
-Camera1.fx: 1071.58
-Camera1.fy: 1072.15
-Camera1.cx: 955.33
-Camera1.cy: 555.983
+Camera1.fx: 1059.6087870662222
+Camera1.fy: 1059.5973705610731
+Camera1.cx: 1050.3552896004385
+Camera1.cy: 731.3912426749002
 
-Camera1.k1: -0.0519091
-Camera1.k2: 0.0250782
-Camera1.p1: 0.000533807
-Camera1.p2: 0.000117517
-Camera1.k3: -0.0101723
-
-Camera2.fx: 1067.61
-Camera2.fy: 1068.32
-Camera2.cx: 964.59
-Camera2.cy: 555.556
-
-Camera2.k1: -0.0500384
-Camera2.k2: 0.0221768
-Camera2.p1: 0.000412861
-Camera2.p2: 0.000442194
-Camera2.k3: -0.00894885
-
-Camera.width: 1920
-Camera.height: 1080
+Camera1.k1: -0.04345139283609733
+Camera1.k2: 0.019439878275353862
+Camera1.k3: -0.03544505860721041
+Camera1.k4: 0.022121647569599227
 
 
-# Camera frames per second 
-Camera.fps: 10
-
-
-# Color order of the images (0: BGR, 1: RGB. It is ignored if images are grayscale)
-Camera.RGB: 1
-
+# Camera resolution
+Camera.width: 2048
+Camera.height: 1536
 
 # 0: disable loop closure, 1: enable loop closure
 System.LoopClosing: 1
 
+# Camera frames per second 
+Camera.fps: 10
 
-# Close/Far threshold. Baseline times.
-# Stereo.ThDepth: 65.0
-Stereo.ThDepth: 100.0
-Stereo.T_c1_c2: !!opencv-matrix
-  rows: 4
-  cols: 4
-  dt: f
-  data: [0.99996212, -0.00133436,  0.00860078, 0.119729,
-          0.00134459,  0.99999839, -0.00118413, -0.000135398,
-          -0.00859918,  0.00119565,  0.99996231, 0.000681149,
-          0.0,0.0,0.0,1.0]
+# Color order of the images (0: BGR, 1: RGB. It is ignored if images are grayscale)
+Camera.RGB: 1
+
 
 #--------------------------------------------------------------------------------------------
 # ORB Parameters
