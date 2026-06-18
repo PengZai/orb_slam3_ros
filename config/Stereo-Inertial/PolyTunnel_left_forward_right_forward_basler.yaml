@@ -31,7 +31,6 @@ Camera1.k3: -0.0006681279528559426
 Camera1.k4: -0.0009677749839773924
 
 Camera1.overlappingBegin: 0
-# Camera1.overlappingEnd: 2637
 Camera1.overlappingEnd: 10000
 
 
@@ -47,8 +46,8 @@ Camera2.k4: -0.019217878957815994
 
 
 Camera2.overlappingBegin: 0
-# Camera2.overlappingEnd: 2637
 Camera2.overlappingEnd: 10000
+# Camera2.overlappingEnd: 2047
 
 Camera.width: 2048
 Camera.height: 1536
@@ -94,7 +93,7 @@ IMU.Frequency: 200.0
 #--------------------------------------------------------------------------------------------
 
 # ORB Extractor: Number of features per image
-ORBextractor.nFeatures: 2500
+ORBextractor.nFeatures: 5000
 
 # ORB Extractor: Scale factor between levels in the scale pyramid 	
 ORBextractor.scaleFactor: 1.2

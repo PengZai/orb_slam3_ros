@@ -1,0 +1,15 @@
+I want write a script to help me get finnal trajfile.txt for rosbag in
+/root/datasets/AereHFeb2026/easy2_AprilAdd/easy2_AprilAdd.bag
+
+then I need run roslaunch files for
+PolyTunnel_mono.launch, PolyTunnel_mono_inertial, PolyTunnel_stereo.launch, , PolyTunnel_stereo_inertial
+
+for example
+roslaunch orb_slam3_ros PolyTunnel_mono.launch
+and play rosbag easy2_AprilAdd.bag
+when the rosbag playing is ended
+we need call rosservice to save trajetory file
+rosservice call /orb_slam3/save_traj PolyTunnel_mono
+the trajectory file will save in /root/.ros/PolyTunnel_mono_cam_traj.txt
+we need copy this file to destinate path
+/root/datasets/AereHFeb2026/easy2_AprilAdd/orb_slam3_traj/PolyTunnel_mono_cam_traj.txt
